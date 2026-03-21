@@ -8,3 +8,4 @@ lets make a change
 change in feature branch before merge
 thisisadded as partof feature c branch ..
 code changed to 2.1
+direct change in master 
