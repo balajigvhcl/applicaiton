@@ -1,9 +1,6 @@
 this is file C 
 
-<<<<<<< HEAD
 this change is from featurea
 
 
-=======
-this change is from git gui 
->>>>>>> 033983417ec78048f3e2d6d62b61b25603e56530
+lets make a change 
