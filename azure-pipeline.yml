@@ -1,0 +1,26 @@
+# azure-pipelines.yml
+trigger:
+- none   # Runs pipeline when changes are pushed to 'main' branch
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+steps:
+- task: UseNode@1
+  inputs:
+    version: '16.x'
+
+- script: |
+    echo "Installing dependencies..."
+    npm install
+  displayName: 'Install dependencies'
+
+- script: |
+    echo "Running build..."
+    npm run build
+  displayName: 'Build project'
+
+- script: |
+    echo "Running tests..."
+    npm test
+  displayName: 'Run tests'
