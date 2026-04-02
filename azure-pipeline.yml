@@ -5,7 +5,7 @@ trigger:
     - featureA
 
 pool:
-  name: 'Default'  # Self-hosted agent on local machine
+  vmImage: 'ubuntu-latest'  # Azure-hosted agent
 
 jobs:
 - job: DeployPodmanContainer
