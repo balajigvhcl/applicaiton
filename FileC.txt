@@ -1,3 +1,4 @@
+
 this is file C 
 
 this change is from featurea
@@ -6,11 +7,6 @@ this change is from featurea
 lets make a change 
 
 change in feature branch before merge
-<<<<<<< HEAD
-
-changes made after tagging
-=======
 thisisadded as partof feature c branch ..
 code changed to 2.1
 direct change in master 
->>>>>>> a26950face7a6432d8c9a99ea6890a0f4cdc1407

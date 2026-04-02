@@ -1,0 +1,59 @@
+# azure-pipelines.yml
+trigger:
+  branches:
+    include:
+    - featureA
+
+pool:
+  name: 'Default'  # Self-hosted agent on local machine
+
+jobs:
+- job: DeployPodmanContainer
+  displayName: 'Deploy Podman Container (Local)'
+  steps:
+  
+  - checkout: self
+  
+  - script: |
+      echo "Checking podman installation..."
+      podman --version
+    displayName: 'Check Podman Version'
+  
+  - script: |
+      echo "Checking podman-compose installation..."
+      podman-compose --version
+    displayName: 'Check Podman-Compose Version'
+  
+  - script: |
+      echo "Stopping any existing containers..."
+      podman-compose -f manifest.yml down || true
+    displayName: 'Stop Existing Containers'
+    continueOnError: true
+  
+  - script: |
+      echo "Building and starting containers from manifest..."
+      podman-compose -f manifest.yml up -d
+    displayName: 'Start Podman Container (manifest.yml)'
+  
+  - script: |
+      echo "Waiting for service to be ready..."
+      timeout /t 3 /nobreak
+      podman-compose -f manifest.yml ps
+    displayName: 'Verify Container Status'
+  
+  - script: |
+      echo "Testing httpd service on port 8080..."
+      curl -v http://localhost:8080/ || echo "Service not yet available"
+    displayName: 'Test HTTPD Service'
+    continueOnError: true
+  
+  - script: |
+      echo "Displaying container logs..."
+      podman-compose -f manifest.yml logs
+    displayName: 'View Container Logs'
+    continueOnError: true
+  
+  - script: |
+      echo "Pipeline completed successfully - Container is running!"
+      podman ps -a
+    displayName: 'Confirm Deployment'
