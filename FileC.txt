@@ -1,9 +1,0 @@
-this is file C 
-
-this change is from featurea
-
-
-lets make a change 
-
-change in feature branch before merge
-This is for squash change featurea
