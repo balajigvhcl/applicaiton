@@ -1,0 +1,22 @@
+version: '3.8'
+
+services:
+  nginx-custom:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: balaji-nginx-custom
+    ports:
+      - "8080:80"
+    environment:
+      - APP_NAME=balaji_hub
+      - PROJECT=app-project
+    volumes:
+      - ./html:/usr/share/nginx/html
+    networks:
+      - app-network
+    restart: unless-stopped
+
+networks:
+  app-network:
+    driver: bridge

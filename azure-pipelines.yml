@@ -1,0 +1,79 @@
+trigger:
+  - main
+  - develop
+
+pr:
+  - main
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+variables:
+  dockerRegistryServiceConnection: 'DockerHubServiceConnection'  # Service connection name in Azure DevOps
+  imageRepository: '1601071/balaji_hub'
+  containerRegistry: 'docker.io'
+  dockerfilePath: '$(Build.SourcesDirectory)/Dockerfile'
+  tag: '$(Build.BuildId)'
+  latestTag: 'latest'
+
+stages:
+  - stage: Build_and_Push
+    displayName: 'Build Docker Image and Push to Registry'
+    jobs:
+      - job: BuildAndPush
+        displayName: 'Build and Push Docker Image'
+        steps:
+          - task: UseDotNet@2
+            displayName: 'Use .NET Core sdk'
+            inputs:
+              version: '6.x'
+              packageType: 'sdk'
+            continueOnError: true
+
+          - task: Docker@2
+            displayName: 'Build Docker Image'
+            inputs:
+              command: 'build'
+              Dockerfile: $(dockerfilePath)
+              repository: $(imageRepository)
+              tags: |
+                $(tag)
+                $(latestTag)
+              arguments: '--build-arg BUILD_ID=$(Build.BuildId) --build-arg BUILD_DATE=$(Build.BuildNumber)'
+
+          - task: Docker@2
+            displayName: 'Login to Docker Registry'
+            inputs:
+              command: 'login'
+              containerRegistry: $(dockerRegistryServiceConnection)
+
+          - task: Docker@2
+            displayName: 'Push Image to Docker Registry'
+            inputs:
+              command: 'push'
+              repository: $(imageRepository)
+              tags: |
+                $(tag)
+                $(latestTag)
+              containerRegistry: $(dockerRegistryServiceConnection)
+
+          - task: Docker@2
+            displayName: 'Logout from Docker Registry'
+            inputs:
+              command: 'logout'
+              containerRegistry: $(dockerRegistryServiceConnection)
+
+  - stage: Verify
+    displayName: 'Verify Docker Image'
+    dependsOn: Build_and_Push
+    condition: succeeded()
+    jobs:
+      - job: VerifyImage
+        displayName: 'Verify Published Image'
+        steps:
+          - script: |
+              echo "Docker image pushed successfully!"
+              echo "Repository: $(containerRegistry)/$(imageRepository)"
+              echo "Tags: $(tag), $(latestTag)"
+              echo "Pull command: docker pull $(containerRegistry)/$(imageRepository):$(tag)"
+            displayName: 'Display Image Information'

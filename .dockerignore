@@ -1,0 +1,53 @@
+# Git
+.git
+.gitignore
+.gitattributes
+
+# Repository files
+README.md
+CHANGELOG.md
+LICENSE
+
+# Documentation
+docs/
+*.md
+
+# Development files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Dependencies (for optimized builds)
+node_modules/
+venv/
+__pycache__/
+*.pyc
+
+# Test files
+test/
+tests/
+.test/
+coverage/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Build artifacts
+.build/
+dist/
+build/
+*.tar
+*.tar.gz
+
+# CI/CD
+.github/
+.gitlab-ci.yml
+.circleci/
+
+# Docker files (don't copy docker-compose into image)
+docker-compose.yml
+Dockerfile
+.dockerignore
