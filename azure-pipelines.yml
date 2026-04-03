@@ -10,10 +10,10 @@ pool:
 
 variables:
   dockerRegistryServiceConnection: 'DockerHubServiceConnection'  # Service connection name in Azure DevOps
-  imageRepository: '1601071/balaji_hub'
+  imageRepository: '1601071/docker-images'  # Docker Hub repository name
   containerRegistry: 'DockerHubServiceConnection'
   dockerfilePath: '$(Build.SourcesDirectory)/Dockerfile'
-  imageName: 'httpd:latest'
+  imageName: '1601071/docker-images'  # Image name without tag
   tag: '$(Build.BuildId)'
   latestTag: 'latest'
 
