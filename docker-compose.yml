@@ -2,14 +2,12 @@ version: '3.8'
 
 services:
   nginx-custom:
-    build:
-      context: .
-      dockerfile: Dockerfile
+    image: 1601071/docker-images:latest   # Pulls image from Docker Hub
     container_name: balaji-nginx-custom
     ports:
       - "8080:80"
     environment:
-      - APP_NAME=balaji_hub
+      - APP_NAME=docker-images
       - PROJECT=app-project
     volumes:
       - ./html:/usr/share/nginx/html
