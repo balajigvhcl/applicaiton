@@ -77,5 +77,5 @@ stages:
         steps:
           - script: |
              echo "Starting container using docker-compose..."
-             docker-compose -f $(Build.SourcesDirectory)/docker-compose.yml up -d
+             docker-compose.exe -f $(Build.SourcesDirectory)/docker-compose.yml up -d
             displayName: 'Run docker-compose up -d'
