@@ -13,7 +13,7 @@ variables:
   imageRepository: '1601071/balaji_hub'
   containerRegistry: docker.io
   dockerfilePath: '$(Build.SourcesDirectory)/Dockerfile'
-  imageName: '1601071/balaji_hub'
+  imageName: '1601071/balaji_hub:24'
   tag: '$(Build.BuildId)'
   latestTag: 'latest'
 
