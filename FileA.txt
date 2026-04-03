@@ -1,2 +1,0 @@
-This is file a
-this is change in file A -1 ## this is changed from featureB  gui 
