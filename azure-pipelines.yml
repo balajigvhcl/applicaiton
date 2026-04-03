@@ -67,3 +67,15 @@ stages:
               echo "Tag: $(latestTag)"
               echo "Pull command: docker pull $(imageName):$(latestTag)"
             displayName: 'Display Image Information'
+- stage: Deploy
+  displayName: 'Deploy Container'
+  dependsOn: Build_and_Push
+  condition: succeeded()
+  jobs:
+    - job: RunContainer
+      displayName: 'Run Container with Docker Compose'
+      steps:
+        - script: |
+            echo "Starting container using docker-compose..."
+            docker-compose -f $(Build.SourcesDirectory)/docker-compose.yml up -d
+          displayName: 'Run docker-compose up -d'
