@@ -10,7 +10,7 @@ variables:
   dockerRegistryServiceConnection: 'DockerHubServiceConnection'  # Service connection name in Azure DevOps
   containerRegistry: 'DockerHubServiceConnection'
   dockerfilePath: '$(Build.SourcesDirectory)/Dockerfile'
-  imageName: '1601071/docker-images'  # Image name without tag
+  imageName: 'docker.io/1601071/docker-images'  # Image name without tag
   latestTag: 'latest'
 
 stages:
