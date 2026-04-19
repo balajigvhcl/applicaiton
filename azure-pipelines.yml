@@ -75,10 +75,27 @@ stages:
       - job: RunContainer
         displayName: 'Run Container with Docker Compose'
         steps:
-          - script: |
-             echo "Starting container using docker-compose..."
-             sudo curl -L "https://github.com/docker/compose/releases/download/2.27.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
-             sudo chmod +x /usr/local/bin/docker-compose
-             docker-compose --version
-             docker-compose -f $(Build.SourcesDirectory)/docker-compose.yml up -d
-            displayName: 'Run docker-compose up -d'
+        - task: Docker@2
+          displayName: 'Login to Docker Registry'
+          inputs:
+            command: 'login'
+            containerRegistry: $(dockerRegistryServiceConnection)
+
+        - script: |
+            echo "Pulling image before running docker-compose..."
+            docker pull $(imageName):$(latestTag)
+          displayName: 'Pull Docker Image'
+
+        - script: |
+            echo "Starting container using docker-compose..."
+            sudo curl -L "https://github.com/docker/compose/releases/download/2.27.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+            sudo chmod +x /usr/local/bin/docker-compose
+            docker-compose --version
+            docker-compose -f $(Build.SourcesDirectory)/docker-compose.yml up -d
+          displayName: 'Run docker-compose up -d'
+
+        - task: Docker@2
+          displayName: 'Logout from Docker Registry'
+          inputs:
+            command: 'logout'
+            containerRegistry: $(dockerRegistryServiceConnection)
