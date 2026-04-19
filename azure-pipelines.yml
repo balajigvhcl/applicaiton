@@ -5,7 +5,7 @@ trigger:
 pr:
   - main
 pool:
-  name: Local
+  name: LocalLinux
 variables:
   dockerRegistryServiceConnection: 'DockerHubServiceConnection'  # Service connection name in Azure DevOps
   containerRegistry: 'DockerHubServiceConnection'
@@ -86,8 +86,8 @@ stages:
 
         - script: |
             echo "Starting container using docker-compose..."
-            docker-compose --version
-            docker-compose -f $(Build.SourcesDirectory)/docker-compose.yml up -d
+            docker compose --version
+            docker compose -f $(Build.SourcesDirectory)/docker-compose.yml up -d
           displayName: 'Run docker-compose up -d'
 
         - task: Docker@2
