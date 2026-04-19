@@ -3,7 +3,7 @@ version: '3.8'
 services:
   nginx-custom:
     image: 1601071/docker-images:latest   # Pulls image from Docker Hub
-    container_name: balaji-nginx-19042026
+    container_name: balaji-nginx-test
     ports:
       - "8080:80"
     environment:
