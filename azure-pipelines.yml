@@ -81,7 +81,7 @@ stages:
 
         - script: |
             echo "Pulling image before running docker-compose..."
-            docker pull $(imageName):$(latestTag)
+            docker pull docker.io/1601071/docker-images:latest
           displayName: 'Pull Docker Image'
 
         - script: |

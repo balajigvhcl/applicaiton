@@ -5,7 +5,7 @@ FROM nginx:latest
 WORKDIR /usr/share/nginx/html
 
 # Add custom message to nginx welcome page
-RUN echo "<h1>This is nginx server image customized by balajigv, under app-project</h1>" > index.html
+RUN echo "<h1>This is nginx server on a linux VM customized by balajigv, under app-project</h1>" > index.html
 
 # Copy any custom nginx configuration if needed
 # COPY nginx.conf /etc/nginx/nginx.conf
