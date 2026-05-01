@@ -12,9 +12,14 @@ pool:
 steps:
 - script: echo Hello, world!
   displayName: 'Run a one-line script'
-
+/*
 - script: |
     echo Add other tasks to build, test, and deploy your project.
     echo See https://aka.ms/yaml
     ansible-playbook create-dir.yml
   displayName: 'Ansible playbook to create directory'
+*/
+
+- script: |
+   ansilble-playbook facts.yml
+  displayName: 'Ansible playbook execution started'
