@@ -1,7 +1,7 @@
 ---
 - name: Create ansible_directory on remote VM
   hosts: localhost
-  become: false
+  become: true
   tasks:
     - name: Ensure ansible_directory exists under /
       file:
