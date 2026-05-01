@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 trigger:
   - main
   - develop
@@ -95,3 +96,25 @@ stages:
           inputs:
             command: 'logout'
             containerRegistry: $(dockerRegistryServiceConnection)
+=======
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+trigger:
+- main
+
+pool:
+  name: LocalLinux
+
+steps:
+- script: echo Hello, world!
+  displayName: 'Run a one-line script'
+
+- script: |
+    echo Add other tasks to build, test, and deploy your project.
+    echo See https://aka.ms/yaml
+    ansible-playbook create-dir.yml
+  displayName: 'Ansible playbook to create directory'
+>>>>>>> 97906da316413bcf583c55690262ab4ba872ec13
