@@ -8,3 +8,12 @@
         path: /ansible_directory-1
         state: directory
         mode: '0755'
+
+  tasks:
+    - name: to create remoteuser in ansible host
+      ansible.builtin.user:
+        name: ruser
+        comment: "remote user"
+        shell: /bin/ksh
+        create_home: yes
+        state: present
