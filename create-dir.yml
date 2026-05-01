@@ -1,10 +1,10 @@
 ---
 - name: Create ansible_directory on remote VM
   hosts: localhost
-  become: true
+  become: false
   tasks:
     - name: Ensure ansible_directory exists under /
       file:
-        path: /ansible_directory
+        path: /tmp/ansible_directory
         state: directory
         mode: '0755'
