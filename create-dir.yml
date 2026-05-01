@@ -27,12 +27,12 @@
         state: directory
         mode: '0700'
     - name: lock .ssh directory (immutable)
-      command: "chattr +i home/{{ target_user }}/.ssh"
+      command: "chattr +i /home/{{ target_user }}/.ssh"
       when: lock_action == "lock"
     - name: unlock .ssh directory (remove (immutable)
-      command: "chattr -i home/{{ target_user }}/.ssh"
+      command: "chattr -i /home/{{ target_user }}/.ssh"
       when: lock_action == "unlock"
-      
+
 
 
     
