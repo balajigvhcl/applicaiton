@@ -16,7 +16,7 @@
       ansible.builtin.debug:
         msg:
           - "Hostname: {{ ansible_facts['hostname'] }}"
-          - "OS: {{ ansible_facts['ansible_distribution'] }} {{ ansible_facts['ansible_distribution_version'] }}"
-          - "Kernel: {{ ansible_facts['ansible_kernel'] }}"
-          - "Total Memory: {{ ansible_facts['ansible_memtotal_mb'] }} MB"
-          - "CPU Count: {{ ansible_facts['ansible_processor_cores'] }}"
+          - "OS: {{ ansible_facts['distribution'] }} {{ ansible_facts['distribution_version'] }}"
+          - "Kernel: {{ ansible_facts['kernel'] }}"
+          - "Total Memory: {{ ansible_facts['memtotal_mb'] }} MB"
+          - "CPU Count: {{ ansible_facts['processor_cores'] }}"
