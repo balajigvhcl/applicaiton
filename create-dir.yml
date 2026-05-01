@@ -5,6 +5,6 @@
   tasks:
     - name: Ensure ansible_directory exists under /
       file:
-        path: /tmp/ansible_directory
+        path: /ansible_directory
         state: directory
         mode: '0755'
