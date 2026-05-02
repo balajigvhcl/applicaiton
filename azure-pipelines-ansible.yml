@@ -10,14 +10,19 @@ pool:
   name: LocalAnsibleVM
 
 steps:
-- script: echo Hello, world!
-  displayName: 'Run a one-line script'
+#- script: echo Hello, world!
+#  displayName: 'Run a one-line script'
 
 #- script:
 #    ansible-playbook create-dir.yml
 #  displayName: 'Ansible playbook to create directory'
 
 
+#- script:
+#    ansible-playbook facts.yml
+#  displayName: 'Ansible playbook execution started'
+
+
 - script:
-    ansible-playbook facts.yml
-  displayName: 'Ansible playbook execution started'
+    ansible-playbook house.yml -e "action=${action} script_src=${script_src}"
+  displayName: 'Ansible Playbook execution started'
