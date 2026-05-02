@@ -4,7 +4,7 @@
   become: yes
 
   vars:
-    script_src: https://github.com/balajigvhcl/application/blob/feature-linuxvm-ansible-deploy/scripts/housekeep.sh
+    script_src: "https://github.com/balajigvhcl/application/blob/feature-linuxvm-ansible-deploy/scripts/housekeep.sh"
     script_dest: /tmp/housekeep.sh
     action: dryrun   # default (override at runtime)
 
