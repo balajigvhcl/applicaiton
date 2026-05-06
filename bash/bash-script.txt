@@ -1,0 +1,64 @@
+# understand the below 
+-n  # avoid newline
+-e  # enable backslash \n or \t
+-E  # disables backslash
+\n  # newline
+\t  # tab
+
+###cat usage
+-n print numbers
+-b ignore blank line numbering
+-s supress repeated empty lines
+-v show nonprinting characters
+> combine 2 file o/p to single file also 
+
+# cp usage or mv usage
+-r all files and folders inside a dir 
+-i ask b4 replacing files
+-u copy if source is newer
+-v show files copied
+
+# rm usage
+-r delete a folder /inside it
+-i ask before
+-f force delete without ask
+-v verbose mode show files being deleted
+
+# touch
+-a last read 
+-m last changed 
+-t set time 
+-c dont create file 
+
+# mkdir
+-m 755 dir willset file mode permissions
+
+# man
+ls list
+grep view manual for grep 
+
+# alias 
+alias ss='ssh'
+alias p='ping'
+vim ~/.bashrc and source ~/.bashrc
+
+# grep
+-i ignore
+-r all files search /subdir
+-v dont match the pattern
+'[A-Za-z]' find lines starting with a letter 
+
+# awk text processing
+-F set what seperates the data field, , means create space
+-v set a variable to be used in script
+-f use a file as source of the awk program 
+awk -F"," -v var="cash:" '{print var, $4}' some.csv
+
+# sed stream editor 
+sed 's/world/bash' file.text
+-i edit files directory without save
+-e add script to the cmd to be executed
+-n dont auto print lines
+-r use extend regular exp
+-f add script from a file 
+-l specify length for l command 
