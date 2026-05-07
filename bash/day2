@@ -1,0 +1,23 @@
+# sed
+sed -i edit files directly without saving seperately 
+'s/source/dest/g' - search and replace 
+
+sed -n 's/world/word/p' file.txt
+print the output 
+
+sed -r 's/(word|line/p)' file.txt
+
+-r adding script from a file, to execute sed commands.
+[root@localhost bash]# sed -f script.sed file.txt
+hello bash
+liene1 liner
+.kine
+line2
+[root@local
+
+-l 10 '1' appends $ at end of each line
+ sed 's/^/hostname: /' file.txt
+hostname: hello world
+hostname: liene1 liner
+hostname: .kine
+hostname: line1
